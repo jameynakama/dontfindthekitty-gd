@@ -1,5 +1,6 @@
 extends Area2D
 
+
 var screen_size
 var tile_size = 20
 var inputs = {
@@ -11,15 +12,18 @@ var inputs = {
 
 onready var ray = $RayCast2D
 
+
 func _ready():
 	screen_size = get_viewport_rect().size
 	position = position.snapped(Vector2.ONE * tile_size)
 	position += Vector2.ONE * tile_size / 2
 
+
 func _unhandled_input(event):
 	for dir in inputs.keys():
 		if event.is_action_pressed(dir):
 			move(dir)
+
 
 func move(dir):
 	var target_position = inputs[dir] * tile_size

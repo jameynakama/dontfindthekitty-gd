@@ -15,36 +15,19 @@ var directions = [
 onready var ray = $RayCast2D
 
 
+func setup(start_position):
+	position = start_position
+	return position
+
+
 func _ready():
 	randomize()
+
 	screen_size = get_viewport_rect().size
+
 	$AnimatedSprite.frame = randi() % 253
-	
-	# TODO: Figure out how not to spawn over another
-#	while true:
-#		position += get_random_vector()
-#		position = position.snapped(Vector2.ONE * TILE_SIZE)
-#		position += Vector2.ONE * (TILE_SIZE / 2)
-#		ray.cast_to = Vector2.ZERO
-#		ray.force_raycast_update()
-#		if ray.is_colliding():
-#			print("I'm colliding!")
-#		if !ray.is_colliding():
-#			break
-	
-	position += get_random_vector()
-	position = position.snapped(Vector2.ONE * TILE_SIZE)
-	position += Vector2.ONE * (TILE_SIZE / 2)
-	
-	modulate = Color8(randi() % 226 + 30, randi() % 226 + 30, randi() % 226 + 30)
-	
+	modulate = Color8((randi() % 206) + 50, (randi() % 206) + 50, (randi() % 206) + 50)
 	$MoveTimer.start(MOVE_TIMEOUT)
-
-
-func get_random_vector():
-	var random_x = randi() % int(screen_size.x) / TILE_SIZE
-	var random_y = randi() % int(screen_size.y) / TILE_SIZE
-	return Vector2(random_x * TILE_SIZE, random_y * TILE_SIZE)
 
 
 func move():

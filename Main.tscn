@@ -4,14 +4,16 @@
 [ext_resource path="res://Aminal.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Player.tscn" type="PackedScene" id=3]
 
-[node name="Main" type="Node"]
+[node name="Main" type="Node2D"]
 script = ExtResource( 1 )
 aminal_scene = ExtResource( 2 )
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="PlayArea" type="Node" parent="."]
+
+[node name="Background" type="ColorRect" parent="PlayArea"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-color = Color( 0.145098, 0.145098, 0.145098, 1 )
+color = Color( 0.133333, 0.129412, 0.129412, 1 )
 
-[node name="Player" parent="." instance=ExtResource( 3 )]
+[node name="Player" parent="PlayArea" instance=ExtResource( 3 )]
 position = Vector2( 11, 9 )
