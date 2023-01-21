@@ -12,7 +12,6 @@ var directions = [
 ]
 
 onready var ray = $RayCast2D
-onready var Constants = $"/root/Constants"
 
 
 func set_initial_position(initial_position):
@@ -22,6 +21,9 @@ func set_initial_position(initial_position):
 
 func _ready():
     randomize()
+
+    var player = get_node("/root/Main/PlayArea/Player")
+    player.connect("contacted_aminal", self, "_contacted")
 
     $AnimatedSprite.frame = randi() % 253
     modulate = Color8((randi() % 206) + 50, (randi() % 206) + 50, (randi() % 206) + 50)
@@ -42,3 +44,9 @@ func move():
             return
         position = future_position
     $MoveTimer.start(MOVE_TIMEOUT)
+
+
+func _contacted(aminal_id):
+    if aminal_id == get_instance_id():
+        print("got me!")
+        queue_free()

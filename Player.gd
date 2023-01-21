@@ -11,10 +11,12 @@ var inputs = {
 
 onready var ray = $RayCast2D
 
-onready var Constants = $"/root/Constants"
+
+signal contacted_aminal(aminal_id)
 
 
 func _ready():
+    position = Vector2(Constants.SCREEN_SIZE.x / 2, Constants.SCREEN_SIZE.y / 2)
     position = position.snapped(Vector2.ONE * tile_size)
     position += Vector2.ONE * tile_size / 2
 
@@ -35,3 +37,5 @@ func move(dir):
             or future_position.y < 0 or future_position.y > Constants.SCREEN_SIZE.y:
             return
         position = future_position
+    else:
+        emit_signal("contacted_aminal", ray.get_collider().get_instance_id())

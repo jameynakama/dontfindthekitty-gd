@@ -6,14 +6,14 @@ export(PackedScene) var aminal_scene
 const NUM_AMINALS = 75
 const TILE_SIZE = 20
 
-onready var Constants = $"/root/Constants"
-
 
 func _ready():
     randomize()
 
-    var used_positions = {}
-    for i in range(NUM_AMINALS):
+    var used_positions = {
+        get_node("PlayArea/Player").position: true
+    }
+    for _i in range(NUM_AMINALS):
         var aminal = aminal_scene.instance()
         while true:
             var pos = get_random_position()
