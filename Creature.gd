@@ -26,10 +26,10 @@ func _ready():
     randomize()
 
     var player = get_node("/root/Main/PlayArea/Player")
-    player.connect("contacted_aminal", self, "_contacted")
+    player.connect("contacted_creature", self, "_contacted")
 
     adjective = Constants.ADJECTIVES[randi() % Constants.ADJECTIVES.size()]
-    type = Constants.AMINAL_TYPES[randi() % Constants.AMINAL_TYPES.size()]
+    type = Constants.CREATURE_TYPES[randi() % Constants.CREATURE_TYPES.size()]
     $AnimatedSprite.frame = randi() % 253
     modulate = Color8((randi() % 206) + 50, (randi() % 206) + 50, (randi() % 206) + 50)
 
@@ -52,8 +52,8 @@ func move():
     $MoveTimer.start(MOVE_TIMEOUT)
 
 
-func _contacted(aminal_id):
-    if aminal_id == get_instance_id():
+func _contacted(creature_id):
+    if creature_id == get_instance_id():
         get_tree().call_group("message", "queue_free")
         $Writer.write_message(
             "Caught %s %s" % [adjective, type],

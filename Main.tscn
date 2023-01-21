@@ -1,13 +1,13 @@
 [gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Main.gd" type="Script" id=1]
-[ext_resource path="res://Aminal.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Creature.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Player.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Writer.tscn" type="PackedScene" id=4]
 
 [node name="Main" type="Node2D"]
 script = ExtResource( 1 )
-aminal_scene = ExtResource( 2 )
+creature_scene = ExtResource( 2 )
 
 [node name="PlayArea" type="Node" parent="."]
 

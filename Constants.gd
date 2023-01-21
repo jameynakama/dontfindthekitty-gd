@@ -9,14 +9,14 @@ onready var MESSAGE_AREA = Vector2(
     PLAY_AREA.y + (1 * TILE_SIZE)
 )
 
-var AMINAL_TYPES = []
+var CREATURE_TYPES = []
 var ADJECTIVES = []
 
 var messages = ["", "", ""]
 
 
 func _ready():
-    read_file_into_array("aminals.txt", AMINAL_TYPES)
+    read_file_into_array("creatures.txt", CREATURE_TYPES)
     read_file_into_array("adjectives.txt", ADJECTIVES)
 
 

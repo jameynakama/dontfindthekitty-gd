@@ -11,7 +11,7 @@ var inputs = {
 onready var ray = $RayCast2D
 
 
-signal contacted_aminal(aminal_id)
+signal contacted_creature(creature_id)
 
 
 func _ready():
@@ -38,4 +38,4 @@ func move(dir):
             return
         position = future_position
     else:
-        emit_signal("contacted_aminal", ray.get_collider().get_instance_id())
+        emit_signal("contacted_creature", ray.get_collider().get_instance_id())

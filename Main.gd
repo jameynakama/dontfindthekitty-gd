@@ -1,9 +1,9 @@
 extends Node2D
 
 
-export(PackedScene) var aminal_scene
+export(PackedScene) var creature_scene
 
-const NUM_AMINALS = 75
+const NUM_CREATURES = 75
 
 
 func _ready():
@@ -19,14 +19,14 @@ func _ready():
     var used_positions = {
         get_node("PlayArea/Player").position: true
     }
-    for _i in range(NUM_AMINALS):
-        var aminal = aminal_scene.instance()
+    for _i in range(NUM_CREATURES):
+        var creature = creature_scene.instance()
         while true:
             var pos = get_random_position()
             if !used_positions.has(pos):
                 used_positions[pos] = true
-                aminal.set_initial_position(pos)
-                $PlayArea.add_child(aminal)
+                creature.set_initial_position(pos)
+                $PlayArea.add_child(creature)
                 break
 
 
