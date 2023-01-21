@@ -4,11 +4,17 @@ extends Node2D
 export(PackedScene) var aminal_scene
 
 const NUM_AMINALS = 75
-const TILE_SIZE = 20
 
 
 func _ready():
     randomize()
+
+    var area_separator = ""
+    for _i in range(Constants.SCREEN_SIZE.x / Constants.TILE_SIZE):
+        area_separator += "-"
+
+    # Actually draw this with nicer glyphs
+    $Text.write(area_separator, Vector2(Constants.TILE_SIZE / 2, Constants.PLAY_AREA.y), $PlayArea)
 
     var used_positions = {
         get_node("PlayArea/Player").position: true
@@ -25,9 +31,9 @@ func _ready():
 
 
 func get_random_position():
-    var random_x = randi() % int(Constants.SCREEN_SIZE.x) / TILE_SIZE
-    var random_y = randi() % int(Constants.SCREEN_SIZE.y) / TILE_SIZE
-    var random_position = Vector2(random_x * TILE_SIZE, random_y * TILE_SIZE)
-    random_position = random_position.snapped(Vector2.ONE * TILE_SIZE)
-    random_position += Vector2.ONE * (TILE_SIZE / 2)
+    var random_x = randi() % int(Constants.PLAY_AREA.x) / Constants.TILE_SIZE
+    var random_y = randi() % int(Constants.PLAY_AREA.y) / Constants.TILE_SIZE
+    var random_position = Vector2(random_x * Constants.TILE_SIZE, random_y * Constants.TILE_SIZE)
+    random_position = random_position.snapped(Vector2.ONE * Constants.TILE_SIZE)
+    random_position += Vector2.ONE * (Constants.TILE_SIZE / 2)
     return random_position

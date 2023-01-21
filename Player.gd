@@ -1,7 +1,6 @@
 extends Area2D
 
 
-var tile_size = 20
 var inputs = {
     "move_up": Vector2.UP,
     "move_right": Vector2.RIGHT,
@@ -16,9 +15,9 @@ signal contacted_aminal(aminal_id)
 
 
 func _ready():
-    position = Vector2(Constants.SCREEN_SIZE.x / 2, Constants.SCREEN_SIZE.y / 2)
-    position = position.snapped(Vector2.ONE * tile_size)
-    position += Vector2.ONE * tile_size / 2
+    position = Vector2(Constants.PLAY_AREA.x / 2, Constants.PLAY_AREA.y / 2)
+    position = position.snapped(Vector2.ONE * Constants.TILE_SIZE)
+    position += Vector2.ONE * Constants.TILE_SIZE / 2
 
 
 func _unhandled_input(event):
@@ -28,13 +27,14 @@ func _unhandled_input(event):
 
 
 func move(dir):
-    var target_position = inputs[dir] * tile_size
+    var target_position = inputs[dir] * Constants.TILE_SIZE
     ray.cast_to = target_position
     ray.force_raycast_update()
     if !ray.is_colliding():
         var future_position = position + target_position
-        if future_position.x < 0 or future_position.x > Constants.SCREEN_SIZE.x \
-            or future_position.y < 0 or future_position.y > Constants.SCREEN_SIZE.y:
+        # TODO: Refactor out-of-bounds code
+        if future_position.x < 0 or future_position.x > Constants.PLAY_AREA.x \
+            or future_position.y < 0 or future_position.y > Constants.PLAY_AREA.y:
             return
         position = future_position
     else:
