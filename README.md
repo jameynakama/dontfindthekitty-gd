@@ -4,8 +4,11 @@ Please don't.
 
 ## TODO
 
-- Make movement keys repeatable
-- Aminal collisions
+- Player-Aminal collisions
 - Aminal types
+- Text (writing)
+- Make movement keys repeatable
 - UI
+- Mouse mode?
+- Title screen - look at old version for what I did
 
