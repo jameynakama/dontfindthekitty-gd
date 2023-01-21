@@ -14,7 +14,7 @@ func _ready():
         area_separator += "-"
 
     # Actually draw this with nicer glyphs
-    $Text.write(area_separator, Vector2(Constants.TILE_SIZE / 2, Constants.PLAY_AREA.y), $PlayArea)
+    $Writer.write(area_separator, Vector2(Constants.TILE_SIZE / 2, Constants.PLAY_AREA.y), $PlayArea)
 
     var used_positions = {
         get_node("PlayArea/Player").position: true

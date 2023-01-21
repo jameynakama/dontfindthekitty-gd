@@ -55,10 +55,8 @@ func move():
 func _contacted(aminal_id):
     if aminal_id == get_instance_id():
         get_tree().call_group("message", "queue_free")
-        $Text.write(
+        $Writer.write_message(
             "Caught %s %s" % [adjective, type],
-            Constants.MESSAGE_AREA,
-            get_node("/root/Main/PlayArea"),
-            "message"
+            get_node("/root/Main/PlayArea")
         )
         queue_free()

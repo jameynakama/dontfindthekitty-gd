@@ -3,7 +3,7 @@
 [ext_resource path="res://Main.gd" type="Script" id=1]
 [ext_resource path="res://Aminal.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Player.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Text.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Writer.tscn" type="PackedScene" id=4]
 
 [node name="Main" type="Node2D"]
 script = ExtResource( 1 )
@@ -19,4 +19,4 @@ color = Color( 0.133333, 0.129412, 0.129412, 1 )
 [node name="Player" parent="PlayArea" instance=ExtResource( 3 )]
 position = Vector2( 11, 9 )
 
-[node name="Text" parent="." instance=ExtResource( 4 )]
+[node name="Writer" parent="." instance=ExtResource( 4 )]

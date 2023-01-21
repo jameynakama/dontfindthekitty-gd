@@ -6,13 +6,13 @@ onready var SCREEN_SIZE = get_viewport_rect().size
 onready var PLAY_AREA = SCREEN_SIZE - (Vector2(0, 4) * TILE_SIZE)
 onready var MESSAGE_AREA = Vector2(
     (1 * TILE_SIZE) + (TILE_SIZE / 2),
-    PLAY_AREA.y + (2 * TILE_SIZE)
+    PLAY_AREA.y + (1 * TILE_SIZE)
 )
 
 var AMINAL_TYPES = []
 var ADJECTIVES = []
 
-var messages = []
+var messages = ["", "", ""]
 
 
 func _ready():
