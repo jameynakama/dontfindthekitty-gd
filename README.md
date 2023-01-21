@@ -4,9 +4,7 @@ Please don't.
 
 ## TODO
 
-- Player-Aminal collisions
-- Aminal types
-- Text (writing)
+- Text (writing) improvements
 - Make movement keys repeatable
 - UI
 - Mouse mode?
