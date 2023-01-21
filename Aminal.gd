@@ -13,6 +13,9 @@ var directions = [
 
 onready var ray = $RayCast2D
 
+var type
+var adjective
+
 
 func set_initial_position(initial_position):
     position = initial_position
@@ -28,6 +31,8 @@ func _ready():
     $AnimatedSprite.frame = randi() % 253
     modulate = Color8((randi() % 206) + 50, (randi() % 206) + 50, (randi() % 206) + 50)
     $MoveTimer.start(MOVE_TIMEOUT)
+    adjective = Constants.ADJECTIVES[randi() % Constants.ADJECTIVES.size()]
+    type = Constants.AMINAL_TYPES[randi() % Constants.AMINAL_TYPES.size()]
 
 
 func move():
@@ -48,5 +53,5 @@ func move():
 
 func _contacted(aminal_id):
     if aminal_id == get_instance_id():
-        print("got me!")
+        print("Caught %s %s" % [adjective, type])
         queue_free()
