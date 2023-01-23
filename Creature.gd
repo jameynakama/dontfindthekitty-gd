@@ -1,6 +1,9 @@
 extends Area2D
 
 
+signal creature_caught(creature_type)
+
+
 const MOVE_TIMEOUT = 0.2
 const CHANCE_TO_WAIT = 0.8
 
@@ -23,8 +26,6 @@ func set_initial_position(initial_position):
 
 
 func _ready():
-    randomize()
-
     var player = get_node("/root/Main/PlayArea/Player")
     player.connect("contacted_creature", self, "_contacted")
 
@@ -52,14 +53,18 @@ func move():
     $MoveTimer.start(MOVE_TIMEOUT)
 
 
-func _contacted(creature_id):
-    if creature_id == get_instance_id():
+func _contacted(creature):
+    if creature.get_instance_id() == get_instance_id():
+        var creature_type = type
+
         get_tree().call_group("message", "queue_free")
+        # TODO: Signal writer instead
         $Writer.write_message(
             "Caught %s %s" % [adjective, type],
             get_node("/root/Main/PlayArea")
         )
-        if type == "kitty":
-            print("game over")
-            get_tree().reload_current_scene()
+
+        Constants.creatures_left -= 1
+        emit_signal("creature_caught", creature_type)
+
         queue_free()

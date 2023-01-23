@@ -1,6 +1,7 @@
 extends Node2D
 
 
+const NUM_CREATURES = 3
 const TILE_SIZE = 20
 onready var SCREEN_SIZE = get_viewport_rect().size
 onready var PLAY_AREA = SCREEN_SIZE - (Vector2(0, 4) * TILE_SIZE)
@@ -12,6 +13,10 @@ onready var MESSAGE_AREA = Vector2(
 var CREATURE_TYPES = []
 var ADJECTIVES = []
 
+# This tracks existing creatures. It feels redundant, since get_nodes_in_group
+# exists, but queue_free doesn't happen till after the current frame, so
+# checking it is problematic due to race conditions.
+var creatures_left := 0
 var messages = ["", "", ""]
 
 
