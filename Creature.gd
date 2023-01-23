@@ -27,7 +27,7 @@ func set_initial_position(initial_position):
 
 func _ready():
     var player = get_node("/root/Main/PlayArea/Player")
-    player.connect("contacted_creature", self, "_contacted")
+    player.connect("contacted_creature", self, "__contacted")
 
     adjective = Constants.ADJECTIVES[randi() % Constants.ADJECTIVES.size()]
     type = Constants.CREATURE_TYPES[randi() % Constants.CREATURE_TYPES.size()]
@@ -53,7 +53,7 @@ func move():
     $MoveTimer.start(MOVE_TIMEOUT)
 
 
-func _contacted(creature):
+func __contacted(creature):
     if creature.get_instance_id() == get_instance_id():
         var creature_type = type
 

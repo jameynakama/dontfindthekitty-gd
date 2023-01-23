@@ -1,6 +1,9 @@
 extends Area2D
 
 
+signal contacted_creature(creature)
+
+
 var inputs = {
     "move_up": Vector2.UP,
     "move_right": Vector2.RIGHT,
@@ -9,9 +12,6 @@ var inputs = {
 }
 
 onready var ray = $RayCast2D
-
-
-signal contacted_creature(creature)
 
 
 func _ready():
