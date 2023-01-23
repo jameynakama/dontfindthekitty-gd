@@ -10,4 +10,5 @@ Please don't.
 - UI
 - Mouse mode?
 - Title screen - look at old version for what I did
+- Score and hi score
 
