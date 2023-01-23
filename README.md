@@ -4,7 +4,6 @@ Please don't.
 
 ## TODO
 
-- Uhhh, add the kitty
 - Text (writing) improvements
 - Make movement keys repeatable
 - UI
