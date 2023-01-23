@@ -3,7 +3,7 @@ extends Node2D
 
 export(PackedScene) var creature_scene
 
-const NUM_CREATURES = 75
+const NUM_CREATURES = 2
 
 
 func _ready():
@@ -28,6 +28,8 @@ func _ready():
                 creature.set_initial_position(pos)
                 $PlayArea.add_child(creature)
                 break
+        var kitty = get_node("PlayArea/Creature")
+        kitty.type = "kitty"
 
 
 func get_random_position():

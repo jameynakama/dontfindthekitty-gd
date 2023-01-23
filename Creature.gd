@@ -59,4 +59,7 @@ func _contacted(creature_id):
             "Caught %s %s" % [adjective, type],
             get_node("/root/Main/PlayArea")
         )
+        if type == "kitty":
+            print("game over")
+            get_tree().reload_current_scene()
         queue_free()
